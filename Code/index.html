@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>**Code** - My Docs</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">My Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Welcome to MkDocs</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">**Code**</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#code" class="nav-link">Code</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#c" class="nav-link">C#</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#python" class="nav-link">Python</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#mkdocs" class="nav-link">MKDocs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="code"><strong>Code</strong></h1>
+<h1 id="c"><strong>C#</strong></h1>
+<pre><code class="language-C#">
+</code></pre>
+<pre><code class="language-C#">// EventHandlers
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Timers;
+using System.Threading.Tasks;
+using static System.Console;
+using Timer = System.Timers.Timer;
+
+namespace Events101
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            EventPublisher E = new EventPublisher();
+            EventSubscriber S = new EventSubscriber();
+            S.Subscribe();
+            Timer timer = new Timer(1000);
+            timer.Elapsed += (sender, e) =&gt; E.OnRaiseCustomEvent();
+            timer.Start();
+            WriteLine(&quot;Start&quot;);
+                for (; ; )
+                {
+                    WriteLine(&quot;Hello world&quot;);
+                    System.Threading.Thread.Sleep(1000);
+                }
+            }
+        }
+
+
+    class EventPublisher
+    {
+        static public event EventHandler RaiseCustomEvent;
+        public void OnRaiseCustomEvent() =&gt; RaiseCustomEvent?.Invoke(this, new EventArgs());
+    }
+    class EventSubscriber
+    {
+        public void Subscribe() =&gt; EventPublisher.RaiseCustomEvent += MyEventHandler;
+        public void Unsubscribe() =&gt; EventPublisher.RaiseCustomEvent -= MyEventHandler;
+        public void MyEventHandler(object sender, EventArgs e) =&gt; WriteLine(&quot;Event received!&quot;);
+    }
+}
+
+</code></pre>
+<pre><code class="language-C#">public int String1 = 12;
+</code></pre>
+<pre><code class="language-C#">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Net.Security;
+using System.Reflection.Emit;
+using System.Runtime.CompilerServices;
+namespace Steve
+{
+class MyClass
+{
+static void Main(string[] args)
+{
+Animal one = new Animal(&quot;Monkey&quot;, 2, &quot;black&quot;, &quot;&quot;);
+Animal two = new Animal(&quot;Cat&quot;, 4, &quot;red&quot;, &quot;&quot;);
+Animal three = new Animal(&quot;Dog&quot;, 4, &quot;Green&quot;, &quot;&quot;);
+Animal Four = new Animal(&quot;Fish&quot;, 0, &quot;blue&quot;, &quot;&quot;);
+pet P = new pet(&quot;Fish&quot;, &quot;Yellow&quot;, 2);
+Console.WriteLine(one);
+Console.WriteLine(two);
+Console.WriteLine(three);
+Console.WriteLine(Four);
+Console.WriteLine(P);
+}
+}
+
+class Animal
+{
+public string name;
+public string color;
+public int Numboflegs { get;private set; }
+public string label;
+
+public Animal(string name, int Numboflegs, string color, string label)
+{
+this.name = name;
+this.Numboflegs = Numboflegs;
+this.color = color;
+this.label = label;
+}
+public override string ToString()
+{
+if (Numboflegs == 2)
+label = &quot;Biped&quot;;
+else if (Numboflegs == 4)
+label = &quot;Quadraped&quot;;
+else label = &quot;undefied&quot;;
+return
+$&quot;The animal is a {this.name} and it has {this.Numboflegs} legs and it is {this.color} Which means it is a {this.label} &quot;;
+}
+} 
+class pet : Animal 
+{
+public string Name { get; set; }
+public pet(string Name, string color, int Numboflegs) : base(&quot;&quot;,Numboflegs,color,&quot;&quot;) {
+this.Name = Name;
+}
+
+public override string ToString()
+{ return $&quot;{base.ToString()}called {Name}&quot;;}
+
+
+}
+List &lt; student &gt; = new List&lt;students&gt;();
+students s;
+
+s = new student(&quot;steve&quot;, new DateTime(2000, 2, 2));
+students.Add(s);
+foreach (student x in studenta) Wrtiteline(x)
+</code></pre>
+<pre><code class="language-C#">
+class myClass
+{
+    static void Main(string[] args)
+    {
+
+
+        List&lt;student&gt; students = new List&lt;student&gt;()
+{
+        new student(&quot;steve&quot;, new DateTime(2000, 2, 2)),
+        new student(&quot;Jeff&quot;, new DateTime(2000, 3, 3)),
+        new student(&quot;Sara&quot;, new DateTime(2001, 4, 4)),
+        new student(&quot;Sarah&quot;, new DateTime(2003, 4, 4))
+};
+        students.Find((n) =&gt; n.name == &quot;steve&quot;)?.withdrawStudent();
+
+        foreach (student x in students.Where((n) =&gt; n.isactive)) { Console.WriteLine(x); }
+
+        var sublist = students.Where(student =&gt; student.name == &quot;steve&quot;);
+        foreach (student x in sublist)
+        { Console.WriteLine(x); }
+        Console.WriteLine($&quot;There are {student.Getnumbofstudents()} active students&quot;);
+    } }
+
+
+
+class person {
+    public string name { get; set; }
+    public DateTime dob { get;private set; }
+
+    public person(string name, DateTime dob)
+    {
+        this.name = name;
+        this.dob = dob;
+    }
+
+    public person(string name, int y, int m, int d) 
+        : this(name, new DateTime(y, m, d)) 
+    {
+
+    }
+    public override string ToString() =&gt; $&quot;{name}&quot;;
+
+
+}
+
+class student : person
+{
+    static private int lastnumallocated = 0;
+    static private int numberofstudents = 0;
+    public bool isactive { get; set; }
+
+    public string studnum { get; private set; }
+    public student(string name, DateTime dob) : base(name, dob)
+    {
+        lastnumallocated++;
+        numberofstudents++;
+        isactive= true; 
+        studnum = lastnumallocated.ToString();
+    }
+    public void withdrawStudent()
+    {
+        isactive= false;
+        numberofstudents--;
+    }
+
+    static public int Getnumbofstudents() =&gt; numberofstudents;
+    public override string ToString() =&gt; $&quot;{base.ToString()} ({studnum})&quot;;
+}
+
+
+</code></pre>
+<h1 id="python"><strong>Python</strong></h1>
+<h1 id="mkdocs"><strong>MKDocs</strong></h1></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
