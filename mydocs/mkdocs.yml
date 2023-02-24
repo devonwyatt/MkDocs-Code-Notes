@@ -1,0 +1,8 @@
+site_name: My Docs
+
+nav:
+  - index.md
+  - Code.md
+
+mardwon_extensions:
+  - Extra
